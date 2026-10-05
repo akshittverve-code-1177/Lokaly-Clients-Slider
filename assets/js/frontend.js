@@ -181,6 +181,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 frame.addEventListener('mousemove', function (e) {
                     if (!isDragging) return;
                     currentX = e.clientX;
+                    // currentX = e.clientX;
                 });
 
                 window.addEventListener('mouseup', function (e) {
