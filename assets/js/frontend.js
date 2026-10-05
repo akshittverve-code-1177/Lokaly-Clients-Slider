@@ -33,12 +33,63 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         }
 
+        // function updateSlider(direction) {
+        //     const currentSlide = slides[currentIndex];
+        //     const parentContainer = document.querySelector('..cps-slider-stage');
+        //     parentContainer.appendChild(currentIndex); 
+        //     slides.forEach(function (slide, index) {
+        //         // console.log(currentIndex)
+        //         slide.classList.toggle('is-active', index === currentIndex);
+        //     });
+        //     animateHorizontal(slides[currentIndex], direction);
+        // }
+
+
         function updateSlider(direction) {
+            const parentContainer = slider.querySelector('.cps-slider-stage');
+            const outgoingSlide = slides.find(function (slide) {
+                return slide.classList.contains('is-active');
+            });
+
+            parentContainer.querySelectorAll('.cps-slide-outgoing').forEach(function (slide) {
+                slide.remove();
+            });
+
+            let outgoingClone = null;
+
+            if (outgoingSlide) {
+                outgoingClone = outgoingSlide.cloneNode(true);
+                outgoingClone.classList.add('cps-slide-outgoing');
+                outgoingClone.setAttribute('aria-hidden', 'true');
+                outgoingClone.inert = true;
+                outgoingClone.style.position = 'absolute';
+                outgoingClone.style.inset = '0';
+                outgoingClone.style.zIndex = '2';
+                outgoingClone.style.pointerEvents = 'none';
+                parentContainer.appendChild(outgoingClone);
+            }
+
             slides.forEach(function (slide, index) {
-                // console.log(currentIndex)
                 slide.classList.toggle('is-active', index === currentIndex);
             });
+
             animateHorizontal(slides[currentIndex], direction);
+
+            if (outgoingClone) {
+                if (outgoingClone.animate && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                    outgoingClone.animate([
+                        { transform: 'translateX(0)' },
+                        { transform: 'translateX(' + (-direction * 100) + '%)' }
+                    ], {
+                        duration: 750,
+                        easing: 'cubic-bezier(0.22, 1, 0.36, 1)'
+                    }).onfinish = function () {
+                        outgoingClone.remove();
+                    };
+                } else {
+                    outgoingClone.remove();
+                }
+            }
         }
 
         prevButtons.forEach(function (button) {
@@ -143,7 +194,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // galleryPrev && galleryPrev.addEventListener('click', function () {
             //     const selectedIndex = thumbs.findIndex(function (thumb) {
-                        // console.log(thumb)
+            // console.log(thumb)
             //         return thumb.classList.contains('is-selected');
             //     });
             //     selectThumb(selectedIndex - 1, -1);
@@ -151,7 +202,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // galleryNext && galleryNext.addEventListener('click', function () {
             //     const selectedIndex = thumbs.findIndex(function (thumb) {
-                        // console.log(thumb)
+            // console.log(thumb)
             //         return thumb.classList.contains('is-selected');
             //     });
             //     selectThumb(selectedIndex + 1, 1);
@@ -159,7 +210,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // thumbs.forEach(function (thumb, index) {
             //     thumb.addEventListener('click', function () {
-                        // console.log(thumb)
+            // console.log(thumb)
             //         selectThumb(index);
             //     });
             // });
@@ -189,7 +240,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     frame.style.cursor = 'grab';
 
                     const diffX = currentX - startX;
-                    const swipeThreshold = 50; 
+                    const swipeThreshold = 50;
 
                     const currentIndex = thumbs.findIndex(function (thumb) {
                         return thumb.classList.contains('is-selected');
