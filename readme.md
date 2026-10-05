@@ -25,3 +25,21 @@ Lokaly Clients
         </svg></button>
 </div>
 
+overflow: hidden clips everything outside the wrapper’s box, including long descriptions. Keep clipping on the slider’s viewport or image/track area, not on the container that holds the description. Let the information area grow and wrap:
+
+.cps-slider-wrapper {
+  overflow: visible;
+}
+
+.cps-slide-info {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+If you only need to prevent horizontal spill from the slider, try clipping horizontally while leaving vertical content visible:
+
+.cps-slider-wrapper {
+  overflow-x: clip;
+  overflow-y: visible;
+}
+
+If the wrapper or slide has a fixed height, remove it or use min-height so longer descriptions can expand.

@@ -3,13 +3,17 @@
 .cps-slider-wrapper {
     width: calc(100% - 96px);
     max-width: 1488px;
-    margin: 40px auto;
+    margin: 0 auto 40px;
     padding: 0;
     box-sizing: border-box;
     color: #111;
     font-family: "Poppins", "Segoe UI", sans-serif;
-    height: 100%;
+    height: auto;
+    /* overflow: hidden; */
+    overflow-x: clip;
+    overflow-y: visible;
 }
+
 
 .cps-slider-shell {
     background: #ffffff;
@@ -163,6 +167,8 @@
     padding: 0;
     display: block;
     background: #fff;
+    min-width: 0;
+    overflow-wrap: anywhere;
 }
 
 /* .cps-copy-panel .cps-slider-nav {
@@ -423,7 +429,7 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-height: 40px;
+    min-height: 35px;
     padding: 0 22px;
     border-radius: 8px;
     background: #1b1d22;

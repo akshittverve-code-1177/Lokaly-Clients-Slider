@@ -30,27 +30,16 @@ function cps_load_plugin() {
 }
 add_action( 'plugins_loaded', 'cps_load_plugin' );
 
+function cps_activate_plugin() {
+    if ( function_exists( 'flush_rewrite_rules' ) ) {
+        flush_rewrite_rules();
+    }
+}
+register_activation_hook( __FILE__, 'cps_activate_plugin' );
 
-// function custom_enable_svg_upload( $mimes ) {
-//     if ( current_user_can( 'administrator' ) ) {
-//         $mimes['svg']  = 'image/svg+xml';
-//         $mimes['svgz'] = 'image/svg+xml';
-//     }
-//     return $mimes;
-// }
-// add_filter( 'upload_mimes', 'custom_enable_svg_upload' );
-
-
-// function cps_activate_plugin() {
-//     if ( function_exists( 'flush_rewrite_rules' ) ) {
-//         flush_rewrite_rules();
-//     }
-// }
-// register_activation_hook( __FILE__, 'cps_activate_plugin' );
-
-// function cps_deactivate_plugin() {
-//     if ( function_exists( 'flush_rewrite_rules' ) ) {
-//         flush_rewrite_rules();
-//     }
-// }
-// register_deactivation_hook( __FILE__, 'cps_deactivate_plugin' );
+function cps_deactivate_plugin() {
+    if ( function_exists( 'flush_rewrite_rules' ) ) {
+        flush_rewrite_rules();
+    }
+}
+register_deactivation_hook( __FILE__, 'cps_deactivate_plugin' );
