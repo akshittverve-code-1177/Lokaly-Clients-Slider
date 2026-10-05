@@ -50,9 +50,7 @@
 .cps-slider-stage {
     position: relative;
     width: 100%;
-    overflow: hidden;
 }
-
 
 .cps-slide,
 .cps-slide.is-active {
