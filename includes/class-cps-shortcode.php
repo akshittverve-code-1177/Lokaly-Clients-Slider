@@ -10,11 +10,6 @@ class CPS_Shortcode {
         add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_frontend_assets' ) );
     }
 
-    // public function enqueue_frontend_assets() {
-    //     wp_enqueue_style( 'cps-frontend', CPS_PLUGIN_URL . 'assets/css/frontend.css', array(), CPS_VERSION );
-    //     wp_enqueue_script( 'cps-frontend', CPS_PLUGIN_URL . 'assets/js/frontend.js', array(), CPS_VERSION, true );
-    // }
-
     public function enqueue_frontend_assets() {
         wp_register_style( 
             'font-awesome-6', 
@@ -109,17 +104,6 @@ class CPS_Shortcode {
                 $icon_images[] = $image_url;
             }
         }
-
-        // $project_data = array(
-        //     'id'             => $project->ID,
-        //     'title'          => get_the_title( $project ),
-        //     'description'    => get_post_meta( $project->ID, '_cps_short_description', true ),
-        //     'store_url'      => get_post_meta( $project->ID, '_cps_store_url', true ),
-        //     'main_image'     => $main_image,
-        //     'gallery'        => $gallery,
-        //     'icon_images'    => $icon_images,
-        //     'features'       => is_array( $features ) ? $features : array(),
-        // );
 
         $project_data = array(
             'id'             => $project->ID,

@@ -4,7 +4,6 @@
     gap: 20px;
 }
 
-
 .cps-field-row {
     display: flex;
     flex-direction: column;
@@ -195,17 +194,6 @@
 
 .cps-remove-image:hover {
     background: #cc0000;
-}
-
-
-
-
-@media (max-width: 767px) {
-
-    .cps-half-row,
-    .cps-repeatable-row {
-        grid-template-columns: 1fr;
-    }
 }
 
 .cps-meta-box {
@@ -403,5 +391,13 @@
 
     .cps-meta-box .cps-source-icon-picker {
         grid-column: span 2;
+    }
+}
+
+@media (max-width: 767px) {
+
+    .cps-half-row,
+    .cps-repeatable-row {
+        grid-template-columns: 1fr;
     }
 }

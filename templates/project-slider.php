@@ -2,9 +2,6 @@
 if ( empty( $projects ) ) {
     return;
 }
-// echo "<pre>";
-// print_r($projects);
-// echo "</pre>";
 ?>
 <div class="cps-slider-wrapper" data-cps-slider>
 
@@ -64,16 +61,6 @@ if ( empty( $projects ) ) {
                             alt="<?php echo esc_attr( $project['title'] ); ?>" />
                     </div>
                     <?php endif; ?>
-
-                    <!-- <?php //if ( ! empty( $project['gallery'] ) ) : ?>
-                                <div class="cps-thumb-list" aria-label="Project gallery">
-                                    <?php //foreach ( $project['gallery'] as $thumb_index => $thumb_url ) : ?>
-                                        <button type="button" class="cps-thumb <?php //echo 0 === $thumb_index ? 'is-selected' : ''; ?>" data-image="<?php echo esc_url( $thumb_url ); ?>" aria-label="Show gallery image <?php echo esc_attr( $thumb_index + 1 ); ?>">
-                                            <img src="<?php //echo esc_url( $thumb_url ); ?>" alt="" />
-                                        </button>
-                                    <?php// endforeach; ?>
-                                </div>
-                            <?php //endif; ?> -->
                 </div>
             </div>
 
@@ -175,8 +162,6 @@ if ( empty( $projects ) ) {
         <?php endforeach; ?>
     </div>
 
-
-    <!-- bottom-navigation only shown on small devices along with top-navigation -->
     <div class="cps-slider-nav bottom-cps-slider-nav">
         <div class="cps-slider-nav-btn">
             <button type="button" class="cps-arrow cps-prev" aria-label="Previous project"><svg
@@ -194,8 +179,5 @@ if ( empty( $projects ) ) {
                 </svg></button>
         </div>
     </div>
-
-
-
 </div>
 </div>

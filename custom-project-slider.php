@@ -21,7 +21,6 @@ require_once CPS_PLUGIN_DIR . 'includes/class-cps-meta-boxes.php';
 require_once CPS_PLUGIN_DIR . 'includes/class-cps-admin.php';
 require_once CPS_PLUGIN_DIR . 'includes/class-cps-shortcode.php';
 
-// To init all the essential thinks 
 function cps_load_plugin() {
     new CPS_Post_Type();
     new CPS_Meta_Boxes();

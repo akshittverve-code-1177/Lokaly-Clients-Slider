@@ -28,47 +28,6 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         }
         
-        // frame.on('select', function () {
-        //     const selection = frame.state().get('selection');
-
-        //     if (multiple) {
-        //         const ids = selection.map(function (attachment) {
-        //             return attachment.id;
-        //         });
-
-        //         target.value = ids.join(',');
-
-        //         const previewWrap = document.getElementById(button.dataset.preview);
-        //         console.log(previewWrap);
-        //         if (previewWrap) {
-        //             previewWrap.innerHTML = '';
-        //             selection.each(function (attachment) {
-        //                 const img = document.createElement('img');
-        //                 img.src = attachment.attributes.url;
-        //                 img.alt = attachment.attributes.title || '';
-        //                 img.className = 'cps-gallery-thumb';
-        //                 previewWrap.appendChild(img);
-        //             });
-        //         }
-        //         return;
-        //     }
-
-        //     const attachment = selection.first();
-        //     if (!attachment) {
-        //         return;
-        //     }
-
-        //     target.value = attachment.id;
-
-        //     const preview = document.getElementById(button.dataset.preview);
-        //     // preview.style.display='block';
-        //     if (preview) {
-        //         const sizes = attachment.attributes.sizes || {};
-        //         preview.src = sizes.thumbnail ? sizes.thumbnail.url : attachment.attributes.url;
-        //         preview.hidden = false;
-        //     }
-        // });
-        
         frame.on('select', function () {
             const selection = frame.state().get('selection');
 
@@ -211,30 +170,6 @@ document.addEventListener('DOMContentLoaded', function () {
         updateStoreFields();
     });
 
-
-    // jQuery(document).ready(function ($) {
-    //     $('#cps_gallery_preview_wrap').on('click', '.cps-remove-image', function (e) {
-    //         e.preventDefault();
-
-    //         var $itemToRemove = $(this).closest('.cps-gallery-item');
-    //         var $input = $('#cps_gallery_images');
-
-    //         $itemToRemove.remove();
-
-    //         var updatedIDs = [];
-    //         $('#cps_gallery_preview_wrap .cps-gallery-thumb').each(function () {
-    //             var id = $(this).data('id');
-    //             if (id) {
-    //                 updatedIDs.push(id);
-    //             }
-    //         });
-
-    //         $input.val(updatedIDs.join(','));
-    //     });
-    // });
-    // check in my class-cps-meta-boxes.php file and admin.js file during adding new project slider the cross icon in the icons images are showing but it is not working and also the drag and drop functionality for ordering the images make sure nothing i want to change i just want this remove image functionality using cross icon and drag-&-drop functionality works on both image previewers screenshot and icons and also in both state creating time and updating time.
-
-    // screenshot image preview
     jQuery(document).ready(function ($) {
         var $previewWrap = $('#cps_gallery_preview_wrap');
         var $hiddenInput = $('#cps_gallery_images');
@@ -269,7 +204,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // icons admin js 
     jQuery(document).ready(function ($) {
 
         function updateIconIdsString() {
@@ -300,62 +234,3 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
 });
-
-
-
-
-// if (multiple) {
-//             frame.on('open', function () {
-//                 const selection = frame.state().get('selection');
-//                 const selectedIds = target.value.split(',').map(function (id) {
-//                     return parseInt(id, 10);
-//                 }).filter(Boolean);
-
-//                 selectedIds.forEach(function (id) {
-//                     selection.add(wp.media.attachment(id));
-//                 });
-//             });
-//         }
-
-//         frame.on('select', function () {
-//             const selection = frame.state().get('selection');
-
-//             if (multiple) {
-//                 const ids = selection.map(function (attachment) {
-//                     return attachment.id;
-//                 });
-
-//                 target.value = ids.join(',');
-
-//                 const previewWrap = document.getElementById(button.dataset.preview);
-//                 console.log(previewWrap);
-//                 if (previewWrap) {
-//                     previewWrap.innerHTML = '';
-//                     selection.each(function (attachment) {
-//                         const img = document.createElement('img');
-//                         img.src = attachment.attributes.url;
-//                         img.alt = attachment.attributes.title || '';
-//                         img.className = 'cps-gallery-thumb';
-//                         previewWrap.appendChild(img);
-//                     });
-//                 }
-//                 return;
-//             }
-
-//             const attachment = selection.first();
-//             if (!attachment) {
-//                 return;
-//             }
-// console.log(target)
-//             target.value = attachment.id;
-
-//             const preview = document.getElementById(button.dataset.preview);
-//             // preview.style.display='block';
-//             if (preview) {
-//                 const sizes = attachment.attributes.sizes || {};
-//                 preview.src = sizes.thumbnail ? sizes.thumbnail.url : attachment.attributes.url;
-//                 preview.hidden = false;
-//             }
-//         });
-
-//         frame.open();

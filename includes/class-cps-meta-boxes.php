@@ -41,8 +41,6 @@ class CPS_Meta_Boxes {
         $store_button_checkbox   = get_post_meta( $post->ID, '_cps_store_button_checkbox', true );
         $icon_button_checkbox   = get_post_meta( $post->ID, '_cps_icon_button_checkbox', true );
         
-        // $cta_label         = get_post_meta( $post->ID, '_cps_cta_label', true );
-        // $cta_url           = get_post_meta( $post->ID, '_cps_cta_url', true );
 
         if ( ! is_array( $gallery_images ) ) {
             $gallery_images = array();
@@ -370,12 +368,6 @@ class CPS_Meta_Boxes {
         if ( isset( $_POST['cps_cta_url'] ) ) {
             update_post_meta( $post_id, '_cps_cta_url', esc_url_raw( wp_unslash( $_POST['cps_cta_url'] ) ) );
         }
-
-        // $store_button_checkbox = isset($_POST['cps_store_button_checkbox']) 
-        //     ? sanitize_key(wp_unslash($_POST['cps_store_button_checkbox'])) 
-        //     : 'no';
-        // $meta_value = ($store_button_checkbox === 'yes') ? 'yes' : 'no';
-        // update_post_meta($post_id, '_cps_store_button_checkbox', $meta_value);
 
         $store_button_checkbox = isset( $_POST['cps_store_button_checkbox'] ) ? sanitize_key( wp_unslash( $_POST['cps_store_button_checkbox'] ) ) : '';
 

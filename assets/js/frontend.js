@@ -5,9 +5,6 @@ document.addEventListener('DOMContentLoaded', function () {
         const slides = Array.from(slider.querySelectorAll('.cps-slide'));
         const prevButtons = slider.querySelectorAll('.cps-prev');
         const nextButtons = slider.querySelectorAll('.cps-next');
-        // console.log(slides)
-        // console.log(prevButtons)
-        // console.log(nextButtons)
         if (!slides.length) {
             return;
         }
@@ -28,18 +25,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 { transform: 'translateX(0)' }
             ], {
                 duration: 450,
-                // duration: 750,
                 easing: 'cubic-bezier(0.22, 1, 0.36, 1)'
             });
         }
-
-        // function updateSlider(direction) {
-        //     slides.forEach(function (slide, index) {
-        //         // console.log(currentIndex)
-        //         slide.classList.toggle('is-active', index === currentIndex);
-        //     });
-        //     animateHorizontal(slides[currentIndex], direction);
-        // }
 
         function updateSlider(direction) {
             const parentContainer = slider.querySelector('.cps-slider-stage');
@@ -90,7 +78,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
         prevButtons.forEach(function (button) {
             button.addEventListener('click', function () {
-                // console.log(currentIndex)
                 currentIndex = (currentIndex - 1 + slides.length) % slides.length;
                 updateSlider(-1);
             });
@@ -98,7 +85,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
         nextButtons.forEach(function (button) {
             button.addEventListener('click', function () {
-                // console.log(currentIndex)
                 currentIndex = (currentIndex + 1) % slides.length;
                 updateSlider(1);
             });
@@ -118,8 +104,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 const selectedThumb = thumbs[selectedIndex];
                 const mainImage = slide.querySelector('.cps-main-image');
                 const imageUrl = selectedThumb.getAttribute('data-image');
-                // const mainImage = slide.querySelector('.cps-main-image- child');
-                // const imageUrl = selectedThumb.getAttribute('data-image-child');
                 const previousIndex = thumbs.findIndex(function (thumb) {
                     return thumb.classList.contains('is-selected');
                 });
@@ -138,8 +122,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     outgoingImage.style.inset = '0';
                     outgoingImage.style.width = '100%';
                     outgoingImage.style.height = '100%';
-                    // outgoingImage.style.width = '90%';
-                    // outgoingImage.style.height = '100%';
                     outgoingImage.style.zIndex = '1';
                     outgoingImage.style.pointerEvents = 'none';
                     frame.appendChild(outgoingImage);
@@ -151,7 +133,6 @@ document.addEventListener('DOMContentLoaded', function () {
                             { transform: 'translateX(0)' },
                             { transform: 'translateX(' + (-slideDirection * 100) + '%)' }
                         ], {
-                            // duration: 450,
                             duration: 650,
                             easing: 'cubic-bezier(0.22, 1, 0.36, 1)'
                         }).onfinish = function () {
@@ -188,30 +169,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
             });
 
-            // galleryPrev && galleryPrev.addEventListener('click', function () {
-            //     const selectedIndex = thumbs.findIndex(function (thumb) {
-            // console.log(thumb)
-            //         return thumb.classList.contains('is-selected');
-            //     });
-            //     selectThumb(selectedIndex - 1, -1);
-            // });
-
-            // galleryNext && galleryNext.addEventListener('click', function () {
-            //     const selectedIndex = thumbs.findIndex(function (thumb) {
-            // console.log(thumb)
-            //         return thumb.classList.contains('is-selected');
-            //     });
-            //     selectThumb(selectedIndex + 1, 1);
-            // });
-
-            // thumbs.forEach(function (thumb, index) {
-            //     thumb.addEventListener('click', function () {
-            // console.log(thumb)
-            //         selectThumb(index);
-            //     });
-            // });
-
-
             const frame = slide.querySelector('.cps-gallery-frame');
 
             if (frame) {
@@ -228,7 +185,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 frame.addEventListener('mousemove', function (e) {
                     if (!isDragging) return;
                     currentX = e.clientX;
-                    // currentX = e.clientX;
                 });
 
                 window.addEventListener('mouseup', function (e) {
