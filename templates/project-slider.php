@@ -141,12 +141,13 @@ if ( empty( $projects ) ) {
                     <div class="cps-source-url-list"
                         aria-label="<?php esc_attr_e( 'Source URLs', 'custom-project-slider' ); ?>">
                         <?php foreach ( $project['source_urls'] as $source ) : ?>
-                        <?php $source_title = $source['title'] ?? ''; ?>
+                         <?php $source_title = $source['title'] ?? ''; ?>
                         <?php $source_icon_id = absint( $source['icon'] ?? 0 ); ?>
-                        <?php $source_icon_url = $source_icon_id ? wp_get_attachment_image_url( $source_icon_id, 'thumbnail' ) : ''; ?>
+
+                         <?php $source_icon_url = $source_icon_id ? wp_get_attachment_image_url( $source_icon_id, 'thumbnail' ) : ''; ?>
                         <?php $source_url = $source['url'] ?? ''; ?>
                         <?php if ( ! $source_title && ! $source_icon_url && ! $source_url ) { continue; } ?>
-                        <?php if ( $source_url ) : ?>
+                         <?php if ( $source_url ) : ?>
                         <a class="cps-source-url-item" href="<?php echo esc_url( $source_url ); ?>" target="_blank"
                             rel="noopener noreferrer">
                             <?php else : ?>

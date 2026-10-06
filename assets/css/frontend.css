@@ -568,6 +568,10 @@
         font-size: 14px;
     }
 
+    .cps-feature-list{
+        gap: 8px;
+    }
+
     .cps-feature-list li {
         padding: 5px;
     }

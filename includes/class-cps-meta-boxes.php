@@ -13,7 +13,7 @@ class CPS_Meta_Boxes {
     public function register_meta_box() {
         add_meta_box(
             'cps_project_details',
-            __( 'Project Details', 'custom-project-slider' ),
+            __( 'Product Details', 'custom-project-slider' ),
             array( $this, 'render_meta_box' ),
             'cps_project',
             'normal',
@@ -98,8 +98,8 @@ class CPS_Meta_Boxes {
 <div class="cps-meta-box">
     <div class="cps-field-row">
         <label
-            for="cps_short_description"><?php esc_html_e( 'Project Description', 'custom-project-slider' ); ?></label>
-        <textarea id="cps_short_description" name="cps_short_description" rows="4"
+            for="cps_short_description"><?php esc_html_e( 'Product Description', 'custom-project-slider' ); ?></label>
+        <textarea id="cps_short_description" name="cps_short_description" rows="4" placeholder='Short description of product.'
             class="widefat"><?php echo esc_textarea( wp_unslash( $short_description ) ); ?></textarea>
     </div>
 

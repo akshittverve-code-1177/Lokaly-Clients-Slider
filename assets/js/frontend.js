@@ -27,8 +27,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 { transform: 'translateX(' + (direction * 100) + '%)' },
                 { transform: 'translateX(0)' }
             ], {
-                // duration: 450,
-                duration: 750,
+                duration: 450,
+                // duration: 750,
                 easing: 'cubic-bezier(0.22, 1, 0.36, 1)'
             });
         }
@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         { transform: 'translateX(0)' },
                         { transform: 'translateX(' + (-direction * 100) + '%)' }
                     ], {
-                        duration: 750,
+                        duration: 450,
                         easing: 'cubic-bezier(0.22, 1, 0.36, 1)'
                     }).onfinish = function () {
                         outgoingClone.remove();
