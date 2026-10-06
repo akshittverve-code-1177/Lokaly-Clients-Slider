@@ -31,15 +31,16 @@ class CPS_Meta_Boxes {
         $store_button_text = get_post_meta( $post->ID, '_cps_store_button_text', true );
         $store_url         = get_post_meta( $post->ID, '_cps_store_url', true );
 
-
         $display_order     = get_post_meta( $post->ID, '_cps_display_order', true );
         $main_image_id     = (int) get_post_meta( $post->ID, '_cps_main_image', true );
         $gallery_images    = get_post_meta( $post->ID, '_cps_gallery_images', true );
         $icon_images       = get_post_meta( $post->ID, '_cps_icon_images', true );
         $features          = get_post_meta( $post->ID, '_cps_features', true );
         $source_urls       = get_post_meta( $post->ID, '_cps_source_urls', true );
-
-
+        
+        $store_button_checkbox   = get_post_meta( $post->ID, '_cps_store_button_checkbox', true );
+        $icon_button_checkbox   = get_post_meta( $post->ID, '_cps_icon_button_checkbox', true );
+        
         // $cta_label         = get_post_meta( $post->ID, '_cps_cta_label', true );
         // $cta_url           = get_post_meta( $post->ID, '_cps_cta_url', true );
 
@@ -95,11 +96,13 @@ class CPS_Meta_Boxes {
         $gallery_images_csv = implode( ',', array_filter( array_map( 'absint', $gallery_images ) ) );
         $icon_images_csv    = implode( ',', array_filter( array_map( 'absint', $icon_images ) ) );
         ?>
+
 <div class="cps-meta-box">
     <div class="cps-field-row">
         <label
             for="cps_short_description"><?php esc_html_e( 'Product Description', 'custom-project-slider' ); ?></label>
-        <textarea id="cps_short_description" name="cps_short_description" rows="4" placeholder='Short description of product.'
+        <textarea id="cps_short_description" name="cps_short_description" rows="4"
+            placeholder='Short description of product.'
             class="widefat"><?php echo esc_textarea( wp_unslash( $short_description ) ); ?></textarea>
     </div>
 
@@ -109,13 +112,8 @@ class CPS_Meta_Boxes {
             <input type="text" id="cps_background_color" name="cps_background_color"
                 value="<?php echo esc_attr( $background_color ); ?>" class="cps-color-picker" />
         </div>
-        <!-- <div>
-                    <label for="cps_display_order"><?php // esc_html_e( 'Display Order', 'custom-project-slider' ); ?></label>
-                    <input type="number" id="cps_display_order" name="cps_display_order" value="<?php // echo esc_attr( $display_order ); ?>" min="0" />
-                </div> -->
     </div>
 
-    <!-- Is custom store avalable  -->
 
     <div class="cps-field-row">
         <p>
@@ -161,25 +159,15 @@ class CPS_Meta_Boxes {
                     value="<?php echo esc_attr( $store_url ); ?>" class="widefat"
                     <?php echo 'yes' === $store_available ? 'required' : ''; ?>>
             </p>
+            <p>
+                <label for="store_button_checkbox">
+                    <input type="checkbox" name="cps_store_button_checkbox" id="store_button_checkbox" value="yes"
+                        <?php checked( $store_button_checkbox, 'yes' ); ?>>
+                    <?php esc_html_e( 'Open link in a new tab', 'custom-project-slider' ); ?>
+                </label>
+            </p>
         </div>
     </div>
-
-
-    <!-- <div class="cps-field-row">
-                <label><?php  // esc_html_e( 'Main Image', 'custom-project-slider' ); ?></label>
-                <div class="cps-media-picker">
-                    <input type="hidden" id="cps_main_image" name="cps_main_image" value="<?php // echo esc_attr( $main_image_id ); ?>" />
-                    <div class="cps-image-preview-wrap">
-                        <?php  // if ( $main_image_url ) : ?>
-                            <img id="cps_main_image_preview" src="<?php  // echo esc_url( $main_image_url ); ?>" alt="" class="cps-image-preview" />
-                        <?php  // else : ?>
-                            <img id="cps_main_image_preview" src="" alt="" class="cps-image-preview cps-image-preview-empty" />
-                        <?php  // endif; ?>
-                    </div>
-                    <button type="button" class="button cps-media-button" data-target="cps_main_image" data-preview="cps_main_image_preview"><?php esc_html_e( 'Select Image', 'custom-project-slider' ); ?></button>
-                </div>
-            </div> -->
-
 
     <div class="cps-field-row">
         <label><?php esc_html_e( 'Product Screenshots', 'custom-project-slider' ); ?></label>
@@ -204,30 +192,6 @@ class CPS_Meta_Boxes {
             </button>
         </div>
     </div>
-
-
-    <!-- old code  -->
-    <!-- <div class="cps-field-row">
-        <label><?php //esc_html_e( 'Product Screenshots', 'custom-project-slider' ); ?></label>
-        <div class="cps-media-picker multi">
-            <input type="hidden" id="cps_gallery_images" name="cps_gallery_images"
-                value="<?php //echo esc_attr( $gallery_images_csv ); ?>" />
-            <div class="cps-gallery-preview-wrap" id="cps_gallery_preview_wrap">
-                <?php //foreach ( $gallery_images as $gallery_image_id ) : ?>
-                <?php //$gallery_image_url = wp_get_attachment_image_url( (int) $gallery_image_id, 'thumbnail' ); ?>
-                <?php //if ( $gallery_image_url ) : ?>
-                <img src="<?php //echo esc_url( $gallery_image_url ); ?>" alt="" class="cps-gallery-thumb"
-                    data-id="<?php //echo esc_attr( $gallery_image_id ); ?>" />
-                <?php //endif; ?>
-                <?php //endforeach; ?>
-            </div>
-            <button type="button" class="button cps-media-button" data-target="cps_gallery_images"
-                data-preview="cps_gallery_preview_wrap"
-                data-multiple="true"><?php //esc_html_e( 'Select Screenshots Images', 'custom-project-slider' ); ?></button>
-        </div>
-    </div> -->
-
-
 
     <div class="cps-field-row">
         <label><?php esc_html_e( 'Product Icons', 'custom-project-slider' ); ?></label>
@@ -254,46 +218,6 @@ class CPS_Meta_Boxes {
                 data-multiple="true"><?php esc_html_e( 'Select Icon Images', 'custom-project-slider' ); ?></button>
         </div>
     </div>
-
-    <!-- old code  -->
-
-    <!-- <div class="cps-field-row">
-        <label><?php //esc_html_e( 'Product Icons', 'custom-project-slider' ); ?></label>
-        <div class="cps-media-picker multi">
-            <input type="hidden" id="cps_icon_images" name="cps_icon_images"
-                value="<?php// echo esc_attr( $icon_images_csv ); ?>" />
-            <div class="cps-gallery-preview-wrap" id="cps_icon_preview_wrap">
-                <?php// foreach ( $icon_images as $icon_image_id ) : ?>
-                <?php //$icon_image_url = wp_get_attachment_image_url( (int) $icon_image_id, 'thumbnail' ); ?>
-                <?php //if ( $icon_image_url ) : ?>
-                <img src="<?php //echo esc_url( $icon_image_url ); ?>" alt="" class="cps-gallery-thumb"
-                    data-id="<?php //echo esc_attr( $icon_image_id ); ?>" />
-                <?php //endif; ?>
-                <?php //endforeach; ?>
-            </div>
-            <button type="button" class="button cps-media-button" data-target="cps_icon_images"
-                data-preview="cps_icon_preview_wrap"
-                data-multiple="true"><?php// esc_html_e( 'Select Icon Images', 'custom-project-slider' ); ?></button>
-        </div>
-    </div> -->
-
-    <!-- <div class="cps-field-row">
-                <label><?php // esc_html_e( 'Highlights', 'custom-project-slider' ); ?></label>
-                <div class="cps-repeatable-group" data-repeatable-group="features">
-                    <?php //foreach ( $features as $index => $feature ) : ?>
-                        <div class="cps-repeatable-item">
-                            <div class="cps-repeatable-row">
-                                <input type="text" name="cps_features[<?php // echo esc_attr( $index ); ?>][label]" value="<?php echo esc_attr( $feature['label'] ?? '' ); ?>" placeholder="Label" />
-                                <input type="text" name="cps_features[<?php // echo esc_attr( $index ); ?>][value]" value="<?php echo esc_attr( $feature['value'] ?? '' ); ?>" placeholder="Value" />
-                                <input type="text" name="cps_features[<?php // echo esc_attr( $index ); ?>][icon]" value="<?php echo esc_attr( $feature['icon'] ?? '' ); ?>" placeholder="Icon class" />
-                                <button type="button" class="button cps-remove-item"><?php esc_html_e( 'Remove', 'custom-project-slider' ); ?></button>
-                            </div>
-                        </div>
-                    <?php // endforeach; ?>
-                </div>
-                <button type="button" class="button cps-add-item" data-repeatable="features"><?php esc_html_e( 'Add Highlight', 'custom-project-slider' ); ?></button>
-            </div> -->
-
 
     <div class="cps-field-row">
         <label><?php esc_html_e( 'Source URLs', 'custom-project-slider' ); ?>
@@ -336,21 +260,18 @@ class CPS_Meta_Boxes {
             <?php endforeach; ?>
         </div>
 
+        <p>
+            <label for="icon_button_checkbox">
+                <input type="checkbox" name="cps_icon_button_checkbox" id="icon_button_checkbox" value="yes"
+                    <?php checked( $icon_button_checkbox, 'yes' ); ?>>
+                <?php esc_html_e( 'Open links in a new tab', 'custom-project-slider' ); ?>
+            </label>
+        </p>
+
         <button type="button" class="button cps-add-item" data-repeatable="source_urls">
             <?php esc_html_e( 'Add Source URL', 'custom-project-slider' ); ?>
         </button>
     </div>
-
-    <!-- <div class="cps-field-row cps-half-row">
-                <div>
-                    <label for="cps_cta_label"><?php // esc_html_e( 'CTA Label', 'custom-project-slider' ); ?></label>
-                    <input type="text" id="cps_cta_label" name="cps_cta_label" value="<?php echo esc_attr( $cta_label ); ?>" />
-                </div>
-                <div>
-                    <label for="cps_cta_url"><?php// esc_html_e( 'CTA URL', 'custom-project-slider' ); ?></label>
-                    <input type="url" id="cps_cta_url" name="cps_cta_url" value="<?php echo esc_url( $cta_url ); ?>" />
-                </div>
-            </div> -->
 </div>
 <?php
     }
@@ -449,5 +370,34 @@ class CPS_Meta_Boxes {
         if ( isset( $_POST['cps_cta_url'] ) ) {
             update_post_meta( $post_id, '_cps_cta_url', esc_url_raw( wp_unslash( $_POST['cps_cta_url'] ) ) );
         }
+
+        // $store_button_checkbox = isset($_POST['cps_store_button_checkbox']) 
+        //     ? sanitize_key(wp_unslash($_POST['cps_store_button_checkbox'])) 
+        //     : 'no';
+        // $meta_value = ($store_button_checkbox === 'yes') ? 'yes' : 'no';
+        // update_post_meta($post_id, '_cps_store_button_checkbox', $meta_value);
+
+        $store_button_checkbox = isset( $_POST['cps_store_button_checkbox'] ) ? sanitize_key( wp_unslash( $_POST['cps_store_button_checkbox'] ) ) : '';
+
+        if ( 'yes' === $store_button_checkbox ) {
+            update_post_meta( $post_id, '_cps_store_button_checkbox', 'yes' );
+        } else {
+            delete_post_meta( $post_id, '_cps_store_button_checkbox' );
+        }
+
+        $icon_button_checkbox = isset( $_POST['cps_icon_button_checkbox'] ) ? sanitize_key( wp_unslash( $_POST['cps_icon_button_checkbox'] ) ) : '';
+
+        if ( 'yes' === $icon_button_checkbox ) {
+            update_post_meta( $post_id, '_cps_icon_button_checkbox', 'yes' );
+        } else {
+            delete_post_meta( $post_id, '_cps_icon_button_checkbox' );
+        }
     }
 }
+
+
+
+
+
+
+  

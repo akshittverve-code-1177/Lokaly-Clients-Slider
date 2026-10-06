@@ -76,14 +76,16 @@ if ( empty( $projects ) ) {
                             <?php //endif; ?> -->
                 </div>
             </div>
-            
+
             <div class="cps-copy-panel">
                 <div class="cps-copy-inner">
                     <h3><?php echo esc_html( $project['title'] ); ?></h3>
                     <p><?php echo wp_kses_post( $project['description'] ); ?></p>
 
                     <?php if ( 'yes' === $project['store_available'] && $project['store_button_text'] && $project['store_url'] ) : ?>
-                    <a href="<?php echo esc_url( $project['store_url'] ); ?>" class="cps-cta-button"
+                    <a href="<?php echo esc_url( $project['store_url'] ); ?>"
+                        target="<?php echo ( 'yes' === $project['cps_store_button_checkbox'] ) ? '_blank' : '_self'; ?>"
+                        class="cps-cta-button"
                         style="background: <?php echo esc_attr( $project['background_color'] ); ?>; display: inline-flex; align-items: center; gap: 8px;">
                         <?php echo esc_html( $project['store_button_text'] ); ?>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="16" height="16"
@@ -141,14 +143,14 @@ if ( empty( $projects ) ) {
                     <div class="cps-source-url-list"
                         aria-label="<?php esc_attr_e( 'Source URLs', 'custom-project-slider' ); ?>">
                         <?php foreach ( $project['source_urls'] as $source ) : ?>
-                         <?php $source_title = $source['title'] ?? ''; ?>
+                        <?php $source_title = $source['title'] ?? ''; ?>
                         <?php $source_icon_id = absint( $source['icon'] ?? 0 ); ?>
 
-                         <?php $source_icon_url = $source_icon_id ? wp_get_attachment_image_url( $source_icon_id, 'thumbnail' ) : ''; ?>
+                        <?php $source_icon_url = $source_icon_id ? wp_get_attachment_image_url( $source_icon_id, 'thumbnail' ) : ''; ?>
                         <?php $source_url = $source['url'] ?? ''; ?>
                         <?php if ( ! $source_title && ! $source_icon_url && ! $source_url ) { continue; } ?>
-                         <?php if ( $source_url ) : ?>
-                        <a class="cps-source-url-item" href="<?php echo esc_url( $source_url ); ?>" target="_blank"
+                        <?php if ( $source_url ) : ?>
+                        <a class="cps-source-url-item" href="<?php echo esc_url( $source_url ); ?>" target="<?php echo ( 'yes' === $project['cps_icon_button_checkbox'] ) ? '_blank' : '_self'; ?>"
                             rel="noopener noreferrer">
                             <?php else : ?>
                             <span class="cps-source-url-item">

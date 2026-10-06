@@ -127,6 +127,8 @@ class CPS_Shortcode {
             'description'    => get_post_meta( $project->ID, '_cps_short_description', true ),
             'store_available' => get_post_meta( $project->ID, '_cps_store_available', true ),
             'store_button_text' => get_post_meta( $project->ID, '_cps_store_button_text', true ),
+            'cps_store_button_checkbox' => get_post_meta( $project->ID, '_cps_store_button_checkbox', true ),
+            'cps_icon_button_checkbox' => get_post_meta( $project->ID, '_cps_icon_button_checkbox', true ),
             'store_url'      => get_post_meta( $project->ID, '_cps_store_url', true ),
             'main_image'     => $main_image,
             'gallery'        => $gallery,

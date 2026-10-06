@@ -388,6 +388,14 @@
     color: #8a2424;
 }
 
+#store_button_checkbox{
+    min-height: 0 !important;
+}
+
+#icon_button_checkbox{
+    min-height: 0 !important;
+}
+
 @media (max-width: 900px) {
     .cps-meta-box .cps-repeatable-row {
         grid-template-columns: repeat(2, minmax(0, 1fr));

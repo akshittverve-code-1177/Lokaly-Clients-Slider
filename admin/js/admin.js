@@ -68,6 +68,7 @@ document.addEventListener('DOMContentLoaded', function () {
         //         preview.hidden = false;
         //     }
         // });
+        
         frame.on('select', function () {
             const selection = frame.state().get('selection');
 
@@ -198,7 +199,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     jQuery(document).ready(function ($) {
         const $storeFields = $('#cps-store-conditional-fields');
-        const $storeInputs = $storeFields.find('input');
+        const $storeInputs = $('#cps_store_button_text, #cps_store_url');
 
         function updateStoreFields() {
             const available = $('input[name="cps_store_available"]:checked').val() === 'yes';
